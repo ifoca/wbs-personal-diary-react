@@ -1,8 +1,22 @@
+import { BrowserRouter, Route, Routes } from 'react-router';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import Home from './pages/Home';
+import MainLayout from './layouts/MainLayout';
+
 function App() {
   return (
-    <>
-      <div>Hello from The main App</div>
-    </>
+    <BrowserRouter>
+      <div className="flex flex-col min-h-screen">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<MainLayout />}>
+            <Route path="/" element={<Home />} />
+          </Route>
+        </Routes>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 
