@@ -11,9 +11,6 @@ const Navbar = () => {
           </div>
           <div className="flex content-end">
             <div className="btn btn-ghost text-xl">
-              <NavLink to={'/'}>Home</NavLink>
-            </div>
-            <div className="btn btn-ghost text-xl">
               <button onClick={() => console.log('Button was clicked')}>Add Diary Entry</button>
             </div>
           </div>
