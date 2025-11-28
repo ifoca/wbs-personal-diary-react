@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router';
+import DiaryItem from '../components/DiaryItem';
 
 const MainLayout = () => {
   return (
@@ -11,6 +12,7 @@ const MainLayout = () => {
         <div>Entry 2</div>
         <div>Entry 3</div>
         <div>Entry 4</div>
+        <DiaryItem />
       </div>
     </main>
   );
