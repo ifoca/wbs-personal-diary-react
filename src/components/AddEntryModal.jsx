@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const AddEntryModal = ({ buttonText, addToDiary }) => {
+const AddEntryModal = ({ buttonText, addToDiary, diaryEntries }) => {
   const initialFormState = {
     title: '',
     date: '',
@@ -9,10 +9,12 @@ const AddEntryModal = ({ buttonText, addToDiary }) => {
   };
 
   const [formState, setFormState] = useState(initialFormState);
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
     const value = e.target.value;
     const field = e.target.name;
+    setError('');
 
     setFormState((prev) => ({
       ...prev,
@@ -23,8 +25,25 @@ const AddEntryModal = ({ buttonText, addToDiary }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // console.log(formState);
+
+    if (!formState.title || !formState.date || !formState.image || !formState.content) {
+      setError('Please fill in all fields.');
+      console.log(error);
+      return; // Stop submission
+    }
+
+    const dateExists = diaryEntries.some((entry) => entry.date === formState.date);
+
+    if (dateExists) {
+      setError(
+        'An entry for this date already exists in your Diary. Please choose a different date or come back tomorrow.'
+      );
+      return; // Stop submission
+    }
+
     addToDiary(formState);
     setFormState(initialFormState);
+    setError('');
     document.getElementById('my_modal_4').close();
   };
 
@@ -36,6 +55,11 @@ const AddEntryModal = ({ buttonText, addToDiary }) => {
       <dialog id="my_modal_4" className="modal">
         <div className="modal-box w-11/12 max-w-5xl">
           <h3 className="font-bold text-lg p-2 mb-4">Add a new entry to your Diary</h3>
+          {error && (
+            <div className="alert alert-error bg-base-200 mb-8 text-white font-normal">
+              <span>{error}</span>
+            </div>
+          )}
           <form
             onSubmit={handleSubmit}
             className="fieldset bg-base-200 border-base-300 rounded-box border p-4"
@@ -95,7 +119,9 @@ const AddEntryModal = ({ buttonText, addToDiary }) => {
           </form>
           <div className="modal-action">
             <form method="dialog">
-              <button className="btn">Close</button>
+              <button onClick={() => setError('')} className="btn">
+                Close
+              </button>
             </form>
           </div>
         </div>
