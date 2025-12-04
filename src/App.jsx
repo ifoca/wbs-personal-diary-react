@@ -44,5 +44,4 @@ export default App;
 /*
 To do: 
   - re-render the home page with items sorted by date
-  - fix opening the modal for each item
 */
