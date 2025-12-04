@@ -1,9 +1,10 @@
 import { NavLink } from 'react-router';
+import AddEntryModal from './AddEntryModal';
 
-const Navbar = () => {
+const Navbar = ({ addToDiary }) => {
   // handle onClick event to add an entry
   return (
-    <div className="mb-8">
+    <nav className="mb-8">
       <div className="bg-neutral text-neutral-content">
         <nav className="flex navbar navbar-center">
           <div className="px-8 mr-auto text-xl">
@@ -11,12 +12,16 @@ const Navbar = () => {
           </div>
           <div className="flex content-end">
             <div className="btn btn-ghost text-xl">
-              <button onClick={() => console.log('Button was clicked')}>Add Diary Entry</button>
+              <NavLink to={'/'}>Homepage</NavLink>
+            </div>
+            <div className="btn btn-ghost text-xl">
+              {/* <button onClick={() => console.log('Button was clicked')}>Add Diary Entry</button> */}
+              <AddEntryModal buttonText="Add Diary Entry" addToDiary={addToDiary} />
             </div>
           </div>
         </nav>
       </div>
-    </div>
+    </nav>
   );
 };
 

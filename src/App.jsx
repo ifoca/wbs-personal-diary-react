@@ -1,16 +1,29 @@
 import { BrowserRouter, Route, Routes } from 'react-router';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import FullDiary from './pages/FullDiary';
+import NotFound from './pages/NotFound';
+import Home from './pages/Home';
 import MainLayout from './layouts/MainLayout';
+import { useState } from 'react';
+import { getLocalStorage, addToLocalStorage } from './utils/shared';
 
 function App() {
+  const [diaryEntries, setDiaryEntries] = useState(getLocalStorage());
+
+  const addToDiary = (item) => {
+    addToLocalStorage(item);
+    setDiaryEntries((prev) => [...prev, item]);
+  };
+
   return (
     <BrowserRouter>
       <div className="flex flex-col min-h-screen">
-        <Navbar />
+        <Navbar addToDiary={addToDiary} />
         <Routes>
-          <Route path="/" element={<MainLayout />}></Route>
+          <Route path="/" element={<MainLayout />}>
+            <Route index element={<Home diaryEntries={diaryEntries} addToDiary={addToDiary} />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
         </Routes>
         <Footer />
       </div>
@@ -28,16 +41,9 @@ To do:
 - Additionally, you will implement functionality to add new entries, 
   ensuring they are validated and stored in localStorage.
 
-    Add Entry Button:
-      - Provide an “Add Entry” button that opens an entry-creation modal
 
     Add Entry Form Fields:
-      - Control showing/hiding the modal with state. A simple form will do.
-      - Form must collect Title, Date, Image URL, Content.
       - Form Validation: Block submission unless all fields are populated.
-
-    LocalStorage Persistence:
-      - Store diary entries as an array in localStorage
 
     One-Entry-Per-Day Check: ??
       - If an entry already exists for the selected day, 
@@ -53,17 +59,4 @@ To do:
             - Clicking a card opens a modal showing full entry 
             (title, date, image, content). Control showing/hiding 
             the preview modal, as well as its content, with state.
-*/
-
-/*
-Possible structure:
-  components
-    - Navbar
-    - Footer
-  layouts
-    - main layout 
-      - containing navbar and footer
-      - list of entries?
-  pages
-    - add content form
 */
