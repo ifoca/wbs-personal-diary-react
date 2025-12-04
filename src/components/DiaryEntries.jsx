@@ -1,7 +1,7 @@
 import DiaryItem from './DiaryItem';
 const DiaryEntries = ({ diaryEntries }) => {
   return (
-    <div>
+    <div className="grid grid-cols-3 gap-2 justify-items-center">
       {diaryEntries.map((entry) => (
         <DiaryItem key={entry.title} entry={entry} />
       ))}
