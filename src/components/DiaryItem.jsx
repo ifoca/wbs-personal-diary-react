@@ -1,4 +1,3 @@
-import ItemModal from './ItemModal';
 const DiaryItem = ({ entry, onOpenModal }) => {
   return (
     <div className="card bg-base-100 image-full w-96 shadow-sm">
