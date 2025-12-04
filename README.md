@@ -2,6 +2,8 @@
 
 This is a weekly project, an web application built with React, Vite and Daisyui
 
+The application is deployed with Render and it can be accessed directly @ https://wbs-personal-diary-react.onrender.com
+
 ## Installation steps
 
     - clone the repository
