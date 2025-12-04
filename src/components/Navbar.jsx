@@ -15,7 +15,6 @@ const Navbar = ({ addToDiary }) => {
               <NavLink to={'/'}>Homepage</NavLink>
             </div>
             <div className="btn btn-ghost text-xl">
-              {/* <button onClick={() => console.log('Button was clicked')}>Add Diary Entry</button> */}
               <AddEntryModal buttonText="Add Diary Entry" addToDiary={addToDiary} />
             </div>
           </div>
