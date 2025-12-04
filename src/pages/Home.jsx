@@ -16,7 +16,11 @@ const Home = ({ diaryEntries, addToDiary }) => {
             </p>
           </div>
           <div className="btn bg-primary p-2">
-            <AddEntryModal buttonText="Add first entry" addToDiary={addToDiary} />
+            <AddEntryModal
+              buttonText="Add first entry"
+              addToDiary={addToDiary}
+              diaryEntries={diaryEntries}
+            />
           </div>
         </div>
       )}
