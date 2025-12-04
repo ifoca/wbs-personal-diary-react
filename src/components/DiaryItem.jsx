@@ -1,5 +1,5 @@
 import ItemModal from './ItemModal';
-const DiaryItem = ({ entry }) => {
+const DiaryItem = ({ entry, onOpenModal }) => {
   return (
     <div className="card bg-base-100 image-full w-96 shadow-sm">
       <figure>
@@ -9,9 +9,9 @@ const DiaryItem = ({ entry }) => {
         <h2 className="card-title">{entry.title}</h2>
         <p className="self-start text-xs font-light">{entry.date}</p>
         <div className="card-actions justify-end">
-          <div className="btn btn-primary">
-            <ItemModal entry={entry} />
-          </div>
+          <button className="btn btn-primary" onClick={() => onOpenModal(entry)}>
+            See more
+          </button>
         </div>
       </div>
     </div>
