@@ -43,10 +43,6 @@ export default App;
 
 /*
 To do: 
-
-    Homepage List:
-    - Display diary entries sorted newest-first.
-    Load Entries on Startup	:
-    - Read and render stored entries when the app first mounts.
-
+  - re-render the home page with items sorted by date
+  - fix opening the modal for each item
 */

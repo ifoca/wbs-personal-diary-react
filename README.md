@@ -1,6 +1,6 @@
 # React + Vite + Tailwind
 
-This is a personal project, an web application built with React and Vite
+This is a weekly project, an web application built with React, Vite and Daisyui
 
 ## Installation steps
 
