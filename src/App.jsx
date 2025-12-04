@@ -4,11 +4,19 @@ import Footer from './components/Footer';
 import NotFound from './pages/NotFound';
 import Home from './pages/Home';
 import MainLayout from './layouts/MainLayout';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getLocalStorage, addToLocalStorage } from './utils/shared';
 
 function App() {
   const [diaryEntries, setDiaryEntries] = useState(getLocalStorage());
+
+  const sortLocalStorage = async () => {
+    diaryEntries.sort((a, b) => b.date.localeCompare(a.date));
+  };
+
+  useEffect(() => {
+    sortLocalStorage();
+  }, [diaryEntries]);
 
   const addToDiary = (item) => {
     addToLocalStorage(item);
