@@ -12,7 +12,7 @@ const Home = ({ diaryEntries, addToDiary }) => {
         <div className="flex flex-col gap-8 items-center m-4 p-4">
           <div>
             <p className="font-normal text-lg">
-              It seems like you don't have any entries in your Personal Diary so far.
+              It seems like you don't have any entries in your personal diary so far.
             </p>
           </div>
           <div className="btn bg-primary p-2">
